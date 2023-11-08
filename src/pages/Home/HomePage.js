@@ -1,5 +1,14 @@
 import { useEffect, useState } from 'react';
 import { fetchApi } from 'takeApi';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+const StyledLink = styled(NavLink)`
+  color: black;
+
+  &.active {
+    color: orange;
+  }
+`;
 export default function Home() {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
@@ -21,7 +30,11 @@ export default function Home() {
   return (
     <ul>
       {movies.map(movie => {
-        return <li key={movie.id}>{movie.name || movie.title}</li>;
+        return (
+          <StyledLink to="/movies/:movieId">
+            <li key={movie.id}>{movie.name || movie.title}</li>
+          </StyledLink>
+        );
       })}
     </ul>
   );

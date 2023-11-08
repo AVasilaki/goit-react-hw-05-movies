@@ -7,6 +7,7 @@ const StyledLink = styled(NavLink)`
     color: orange;
   }
 `;
+
 export default function MovieDetails() {
   return (
     <div>
