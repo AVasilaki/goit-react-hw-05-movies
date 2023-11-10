@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home/HomePage';
 import Movies from '../pages/Movies/MoviesPage';
 import Cast from '../pages/Cast/CastPage';
-import MovieDetails from '../pages/MovieDetails/MovieDetailsPage';
+import { MovieDetails } from '../pages/MovieDetails/MovieDetailsPage';
 import Reviews from '../pages/Reviews/ReviewsPage';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
@@ -27,7 +27,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />}>
+        <Route path="/movies/:id" element={<MovieDetails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>

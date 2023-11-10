@@ -33,7 +33,7 @@ export default function Home() {
     <ul>
       {movies.map(movie => {
         return (
-          <StyledLink to="/movies/:movieId" key={movie.id}>
+          <StyledLink to={`/movies/${movie.id}`} key={movie.id}>
             <li>{movie.name || movie.title}</li>
           </StyledLink>
         );
