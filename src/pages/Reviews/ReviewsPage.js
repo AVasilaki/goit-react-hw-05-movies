@@ -28,7 +28,7 @@ export default function Reviews() {
   return (
     <ul>
       {reviews.map(review => (
-        <li>
+        <li key={review.id}>
           <p>{review.content}</p>
         </li>
       ))}

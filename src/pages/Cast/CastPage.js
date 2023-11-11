@@ -27,7 +27,7 @@ export default function Casts() {
   return (
     <ul>
       {actors.map(actor => (
-        <li>
+        <li key={actor.id}>
           <img
             src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
             alt=""
