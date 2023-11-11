@@ -9,7 +9,6 @@ const StyledLink = styled(NavLink)`
     color: orange;
   }
 `;
-
 export default function Movies() {
   const [keyword, setKeyword] = useState('');
   const [page, setPage] = useState(1);
@@ -73,6 +72,7 @@ export default function Movies() {
           );
         })}
       </ul>
+      <button onClick={() => setPage(page + 1)}>load more</button>
     </>
   );
 }

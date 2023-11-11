@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchApi } from 'takeApi';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-
+import { Audio } from 'react-loader-spinner';
 const StyledLink = styled(NavLink)`
   color: blue;
 
@@ -13,7 +13,9 @@ const StyledLink = styled(NavLink)`
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
+    setLoader(true);
     async function getI() {
       const endPoint = '/trending/all/day';
       try {
@@ -25,19 +27,23 @@ export default function Home() {
         alert('something wrong');
         return error;
       } finally {
+        setLoader(false);
       }
     }
     getI();
   }, []);
   return (
-    <ul>
-      {movies.map(movie => {
-        return (
-          <StyledLink to={`/movies/${movie.id}`} key={movie.id}>
-            <li>{movie.name || movie.title}</li>
-          </StyledLink>
-        );
-      })}
-    </ul>
+    <>
+      <ul>
+        {movies.map(movie => {
+          return (
+            <StyledLink to={`/movies/${movie.id}`} key={movie.id}>
+              <li>{movie.name || movie.title}</li>
+            </StyledLink>
+          );
+        })}
+      </ul>
+      <Audio visible={loader} />
+    </>
   );
 }

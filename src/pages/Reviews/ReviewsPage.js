@@ -7,6 +7,7 @@ export default function Reviews() {
   const [page, setPage] = useState(1);
   const { id } = useParams();
   console.log(id);
+  // const handleLoad = setPage(page + 1);
   useEffect(() => {
     async function getI() {
       const endPoint = `/movie/${id}/reviews`;
@@ -24,14 +25,17 @@ export default function Reviews() {
       }
     }
     getI();
-  }, [id]);
+  }, [id, page]);
   return (
-    <ul>
-      {reviews.map(review => (
-        <li key={review.id}>
-          <p>{review.content}</p>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul>
+        {reviews.map(review => (
+          <li key={review.id}>
+            <p>{review.content}</p>
+          </li>
+        ))}
+      </ul>
+      <button onClick={() => setPage(page + 1)}>load more</button>
+    </>
   );
 }
