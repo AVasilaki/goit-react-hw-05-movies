@@ -14,9 +14,9 @@ const StyledLink = styled(NavLink)`
 
 export const MovieDetails = () => {
   const [movieDetail, setMovieDetail] = useState({});
-  const { id } = useParams();
-  // const endPoint = `/movie/${id}`;
   const [genres, setGenres] = useState([]);
+  const { id } = useParams();
+
   useEffect(() => {
     async function getI() {
       const endPoint = `/movie/${id}`;
