@@ -3,7 +3,7 @@ import { fetchApi } from 'takeApi';
 import { NavLink, Outlet } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
+// import Casts from 'pages/Cast/CastPage';
 const StyledLink = styled(NavLink)`
   color: black;
 
@@ -53,10 +53,11 @@ export const MovieDetails = () => {
 
       <div>
         <nav>
-          <StyledLink to="/movies/:id/cast">Cast</StyledLink>
-          <StyledLink to="/movies/:id/reviews">Reviews</StyledLink>
+          <StyledLink to="cast">Cast</StyledLink>
+          <StyledLink to="reviews">Reviews</StyledLink>
         </nav>
       </div>
+
       <Outlet></Outlet>
     </>
   );
