@@ -4,18 +4,18 @@ import Movies from '../pages/Movies/MoviesPage';
 import Cast from '../pages/Cast/CastPage';
 import { MovieDetails } from '../pages/MovieDetails/MovieDetailsPage';
 import Reviews from '../pages/Reviews/ReviewsPage';
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+// import styled from 'styled-components';
+// import { NavLink } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 // import { fetchApi } from 'takeApi';
 // import { useEffect, useState } from 'react';
-const StyledLink = styled(NavLink)`
-  color: black;
+// const StyledLink = styled(NavLink)`
+//   color: black;
 
-  &.active {
-    color: orange;
-  }
-`;
+//   &.active {
+//     color: orange;
+//   }
+// `;
 export const App = () => {
   return (
     <div>
