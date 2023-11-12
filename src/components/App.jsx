@@ -6,6 +6,7 @@ import { MovieDetails } from '../pages/MovieDetails/MovieDetailsPage';
 import Reviews from '../pages/Reviews/ReviewsPage';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { SharedLayout } from './SharedLayout/SharedLayout';
 // import { fetchApi } from 'takeApi';
 // import { useEffect, useState } from 'react';
 const StyledLink = styled(NavLink)`
@@ -18,20 +19,22 @@ const StyledLink = styled(NavLink)`
 export const App = () => {
   return (
     <div>
-      <nav>
+      {/* <nav>
         <StyledLink to="/" end>
           Home
         </StyledLink>
         <StyledLink to="/movies">Movies</StyledLink>
-      </nav>
+      </nav> */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:id" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:id" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<Home />} />
         </Route>
-        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );
