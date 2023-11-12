@@ -1,6 +1,7 @@
 import { fetchApi } from 'takeApi';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Wrapper, WrapperCard } from './CastPage.styled';
 
 export default function Casts() {
   const [actors, setActors] = useState([]);
@@ -25,19 +26,21 @@ export default function Casts() {
     getI();
   }, [id]);
   return (
-    <ul>
+    <Wrapper>
       {actors.map(actor => (
-        <li key={actor.id}>
+        <WrapperCard key={actor.id}>
           <img
-            src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
-            alt=""
+            src={
+              actor.profile_path
+                ? `https://image.tmdb.org/t/p/w200/${actor.profile_path}`
+                : 'https://gdr.one/simg/200x305/5094bd/fff?text=Avatar'
+            }
+            alt={actor.name}
           ></img>
-          <p>
-            {actor.name}
-            <span> - character : "{actor.character}"</span>
-          </p>
-        </li>
+          <h3>{actor.name}</h3>
+          <p>character : "{actor.character}"</p>
+        </WrapperCard>
       ))}
-    </ul>
+    </Wrapper>
   );
 }
