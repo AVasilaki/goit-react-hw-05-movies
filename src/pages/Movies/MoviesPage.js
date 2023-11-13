@@ -3,7 +3,12 @@ import { fetchApi } from 'takeApi';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Audio } from 'react-loader-spinner';
-import { Searchbar } from './Movie,styled';
+import {
+  LoadMoreButton,
+  SearchFormButton,
+  SearchFormInput,
+  Searchbar,
+} from './Movie,styled';
 const StyledLink = styled(NavLink)`
   color: blue;
 
@@ -54,18 +59,16 @@ export default function Movies() {
       <Searchbar>
         <header className="Searchbar">
           <form className="SearchForm " onSubmit={evt => onChange(evt)}>
-            <button type="submit" className="SearchForm-button">
-              <span className="button-label">Search</span>
-            </button>
-
-            <input
-              className="SearchForm-input"
+            <SearchFormButton type="submit" className="SearchForm-button">
+              Search
+            </SearchFormButton>
+            <SearchFormInput
               type="text"
               autoComplete="off"
               autoFocus
               placeholder="Search movies "
               name="keyword"
-            />
+            ></SearchFormInput>
           </form>
         </header>
       </Searchbar>
@@ -81,7 +84,9 @@ export default function Movies() {
       <Audio visible={loader} />
 
       {btnLoadMore && (
-        <button onClick={() => setPage(page + 1)}>load more</button>
+        <LoadMoreButton onClick={() => setPage(page + 1)}>
+          load more
+        </LoadMoreButton>
       )}
     </>
   );
