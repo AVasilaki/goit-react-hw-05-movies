@@ -6,15 +6,13 @@ import { Wrapper, WrapperCard } from './CastPage.styled';
 export default function Casts() {
   const [actors, setActors] = useState([]);
   const { id } = useParams();
-  console.log(id);
+
   useEffect(() => {
     async function getI() {
       const endPoint = `/movie/${id}/credits`;
       try {
         const resp = await fetchApi(endPoint);
-        console.log(resp);
-        // setMovieDetail(resp.data);
-        // setGenres(resp.data.genres);
+
         setActors(resp.data.cast);
       } catch (error) {
         console.error(error);

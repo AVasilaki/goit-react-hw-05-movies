@@ -22,7 +22,7 @@ export default function Movies() {
   const [movies, seMovies] = useState([]);
   const [loader, setLoader] = useState(false);
   const [btnLoadMore, setBtnLoadMore] = useState(false);
-  //   setImages([]);
+
   const onChange = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
@@ -37,9 +37,9 @@ export default function Movies() {
     async function getI() {
       try {
         const resp = await fetchApi(endPoint, keyword, page);
-        console.log(keyword, 'key');
+
         seMovies(p => [...p, ...resp.data.results]);
-        console.log(resp, 'resp');
+
         setBtnLoadMore(true);
         page * 20 > resp.data.results.total_results
           ? setBtnLoadMore(false)

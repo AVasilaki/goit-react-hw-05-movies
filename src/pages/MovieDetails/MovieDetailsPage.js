@@ -1,4 +1,4 @@
-// import styled from 'styled-components';
+
 import { fetchApi } from 'takeApi';
 import { Outlet } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -8,7 +8,7 @@ import {
   Header,
   Link,
 } from 'components/SharedLayout/SharedLayout.styled';
-// import Casts from 'pages/Cast/CastPage';
+
 import { Wrapper } from './MovieDetailsPage.styled';
 export const MovieDetails = () => {
   const [movieDetail, setMovieDetail] = useState({});
@@ -20,7 +20,7 @@ export const MovieDetails = () => {
       const endPoint = `/movie/${id}`;
       try {
         const resp = await fetchApi(endPoint);
-        console.log(resp);
+       
         setMovieDetail(resp.data);
         setGenres(resp.data.genres);
       } catch (error) {
@@ -32,7 +32,7 @@ export const MovieDetails = () => {
     }
     getI();
   }, [id]);
-  console.log('poster-patch', genres);
+  
 
   return (
     <>

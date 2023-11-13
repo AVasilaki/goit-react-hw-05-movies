@@ -20,8 +20,7 @@ export const Searchbar = styled.div`
 export const SearchFormButton = styled.button`
   display: inline-block;
   margin-right: 20px;
-  /* width: 48px; */
-  border-radius: 8px;
+    border-radius: 8px;
   height: 38px;
   border: 0;
   font-size: 15px;

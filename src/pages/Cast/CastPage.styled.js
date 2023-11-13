@@ -19,10 +19,8 @@ export const WrapperCard = styled.li`
 `;
 export const Wrapper = styled.ul`
   display: flex;
-  /* Make a flex container multiline */
+
   flex-wrap: wrap;
-  /* Set gap between rows and columns */
-  /* gap: 10px; */
+
   padding: 0;
-  /* list-style: none; */
 `;

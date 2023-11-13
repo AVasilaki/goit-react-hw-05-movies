@@ -6,16 +6,13 @@ export default function Reviews() {
   const [reviews, setReviews] = useState([]);
   const [page, setPage] = useState(1);
   const { id } = useParams();
-  console.log(id);
-  // const handleLoad = setPage(page + 1);
+    
   useEffect(() => {
     async function getI() {
       const endPoint = `/movie/${id}/reviews`;
       try {
         const resp = await fetchApi(endPoint, page);
-        console.log(resp);
-        // setMovieDetail(resp.data);
-        // setGenres(resp.data.genres);
+               
         setReviews(resp.data.results);
       } catch (error) {
         console.error(error);

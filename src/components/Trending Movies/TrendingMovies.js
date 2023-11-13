@@ -20,7 +20,7 @@ export default function Home() {
       const endPoint = '/trending/all/day';
       try {
         const resp = await fetchApi(endPoint);
-        console.log(resp.data.results);
+
         setMovies(resp.data.results);
       } catch (error) {
         console.error(error);

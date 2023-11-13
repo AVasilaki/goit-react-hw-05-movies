@@ -4,27 +4,13 @@ import Movies from '../pages/Movies/MoviesPage';
 import Cast from '../pages/Cast/CastPage';
 import { MovieDetails } from '../pages/MovieDetails/MovieDetailsPage';
 import Reviews from '../pages/Reviews/ReviewsPage';
-// import styled from 'styled-components';
-// import { NavLink } from 'react-router-dom';
-import { SharedLayout } from './SharedLayout/SharedLayout';
-// import { fetchApi } from 'takeApi';
-// import { useEffect, useState } from 'react';
-// const StyledLink = styled(NavLink)`
-//   color: black;
 
-//   &.active {
-//     color: orange;
-//   }
-// `;
+import { SharedLayout } from './SharedLayout/SharedLayout';
+
 export const App = () => {
   return (
     <div>
-      {/* <nav>
-        <StyledLink to="/" end>
-          Home
-        </StyledLink>
-        <StyledLink to="/movies">Movies</StyledLink>
-      </nav> */}
+      
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
