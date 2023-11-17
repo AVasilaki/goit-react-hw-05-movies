@@ -14,6 +14,7 @@ const StyledLink = styled(NavLink)`
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const [loader, setLoader] = useState(false);
+
   useEffect(() => {
     setLoader(true);
     async function getI() {

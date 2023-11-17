@@ -1,7 +1,7 @@
-
+import { BackLink } from 'components/BackLink';
 import { fetchApi } from 'takeApi';
 import { Outlet } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {
   Container,
@@ -14,13 +14,17 @@ export const MovieDetails = () => {
   const [movieDetail, setMovieDetail] = useState({});
   const [genres, setGenres] = useState([]);
   const { id } = useParams();
+  const location = useLocation();
+
+  const backLinkHref = location.state?.from ?? `/movies`;
+  console.log(location.state);
 
   useEffect(() => {
     async function getI() {
       const endPoint = `/movie/${id}`;
       try {
         const resp = await fetchApi(endPoint);
-       
+
         setMovieDetail(resp.data);
         setGenres(resp.data.genres);
       } catch (error) {
@@ -32,12 +36,12 @@ export const MovieDetails = () => {
     }
     getI();
   }, [id]);
-  
 
   return (
     <>
       <div>
         <Wrapper>
+          <BackLink to={backLinkHref}>Back to movies</BackLink>
           <img
             src={`https://image.tmdb.org/t/p/w300/${movieDetail.poster_path}`}
             alt=""
