@@ -1,4 +1,5 @@
 import { BackLink } from 'components/BackLink';
+import { Suspense } from 'react';
 import { fetchApi } from 'takeApi';
 import { Outlet } from 'react-router-dom';
 import { useParams, useLocation } from 'react-router-dom';
@@ -10,7 +11,8 @@ import {
 } from 'components/SharedLayout/SharedLayout.styled';
 
 import { Wrapper } from './MovieDetailsPage.styled';
-export const MovieDetails = () => {
+
+const MovieDetails = () => {
   const [movieDetail, setMovieDetail] = useState({});
   const [genres, setGenres] = useState([]);
   const { id } = useParams();
@@ -65,8 +67,10 @@ export const MovieDetails = () => {
           </nav>
         </Header>
       </Container>
-
-      <Outlet></Outlet>
+      <Suspense fallback={<div>...loading page</div>}>
+        <Outlet></Outlet>
+      </Suspense>
     </>
   );
 };
+export default MovieDetails;

@@ -64,5 +64,6 @@ export const SearchFormInput = styled.input`
 `;
 export const Page = styled.h3`
   color: blue;
-  margin-left: auto;
+
+  margin-left: 70px;
 `;
