@@ -25,12 +25,15 @@ const MovieDetails = () => {
   const backLinkHref = location.state?.from ?? `/movies`;
   // const linkTo = { pathname: '/movies', state: { query: backLinkHref.search } };
   useEffect(() => {
-    setBack(backLinkHref);
-  }, []);
+    if (typeof backLinkHref === 'object') {
+      setBack(backLinkHref);
+    }
+  }, [backLinkHref]);
 
   console.log('back', back);
   console.log('location state', backLinkHref.search);
-  const p = backLinkHref.search;
+  console.log('type', typeof backLinkHref);
+
   useEffect(() => {
     async function getI() {
       const endPoint = `/movie/${id}`;
@@ -72,12 +75,8 @@ const MovieDetails = () => {
       <Container>
         <Header>
           <nav>
-            <Link to="cast" state={`/movies${backLinkHref.search}`}>
-              Cast
-            </Link>
-            <Link to="reviews" state={`/movies${p}`}>
-              Reviews
-            </Link>
+            <Link to="cast">Cast</Link>
+            <Link to="reviews">Reviews</Link>
           </nav>
         </Header>
         <Suspense fallback={<div>...loading page</div>}>
