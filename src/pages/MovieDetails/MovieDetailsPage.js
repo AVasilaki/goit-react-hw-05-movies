@@ -56,7 +56,7 @@ const MovieDetails = () => {
     <>
       <div>
         <Wrapper>
-          <BackLink to={back}>Back to movies</BackLink>
+          {back !== undefined && <BackLink to={back}>Back to movies</BackLink>}
           <img
             src={`https://image.tmdb.org/t/p/w300/${movieDetail.poster_path}`}
             alt=""
