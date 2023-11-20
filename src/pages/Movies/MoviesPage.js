@@ -36,6 +36,7 @@ const Movies = () => {
 
         setTotalPages(resp.data.total_pages);
         setMovies(p => [...resp.data.results]);
+        console.log(resp.data);
         if (totalPages > 19) {
           setBtnLoadMore(true);
         }

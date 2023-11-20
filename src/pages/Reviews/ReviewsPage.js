@@ -1,13 +1,12 @@
 import { fetchApi } from 'takeApi';
 import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
   const [page, setPage] = useState(1);
+  const [btnLoadMore, setBtnLoadMore] = useState(false);
   const { id } = useParams();
-  const location = useLocation();
-  console.log(location);
 
   useEffect(() => {
     async function getI() {
@@ -16,6 +15,9 @@ export default function Reviews() {
         const resp = await fetchApi(endPoint, page);
 
         setReviews(resp.data.results);
+        if (resp.data.page > 1) {
+          setBtnLoadMore(true);
+        }
       } catch (error) {
         console.error(error);
         alert('something wrong');
@@ -34,7 +36,9 @@ export default function Reviews() {
           </li>
         ))}
       </ul>
-      <button onClick={() => setPage(page + 1)}>load more</button>
+      {btnLoadMore && (
+        <button onClick={() => setPage(page + 1)}>load more</button>
+      )}
     </>
   );
 }
