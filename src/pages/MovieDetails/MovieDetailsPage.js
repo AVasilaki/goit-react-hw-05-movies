@@ -12,15 +12,25 @@ import {
 
 import { Wrapper } from './MovieDetailsPage.styled';
 
+// import Casts from 'pages/Cast/CastPage';
+
 const MovieDetails = () => {
   const [movieDetail, setMovieDetail] = useState({});
   const [genres, setGenres] = useState([]);
   const { id } = useParams();
+  const [back, setBack] = useState();
   const location = useLocation();
+  // const [searchParams] = useSearchParams();
 
   const backLinkHref = location.state?.from ?? `/movies`;
-  console.log(location.state);
+  // const linkTo = { pathname: '/movies', state: { query: backLinkHref.search } };
+  useEffect(() => {
+    setBack(backLinkHref);
+  }, []);
 
+  console.log('back', back);
+  console.log('location state', backLinkHref.search);
+  const p = backLinkHref.search;
   useEffect(() => {
     async function getI() {
       const endPoint = `/movie/${id}`;
@@ -43,7 +53,7 @@ const MovieDetails = () => {
     <>
       <div>
         <Wrapper>
-          <BackLink to={backLinkHref}>Back to movies</BackLink>
+          <BackLink to={back}>Back to movies</BackLink>
           <img
             src={`https://image.tmdb.org/t/p/w300/${movieDetail.poster_path}`}
             alt=""
@@ -62,14 +72,18 @@ const MovieDetails = () => {
       <Container>
         <Header>
           <nav>
-            <Link to="cast">Cast</Link>
-            <Link to="reviews">Reviews</Link>
+            <Link to="cast" state={`/movies${backLinkHref.search}`}>
+              Cast
+            </Link>
+            <Link to="reviews" state={`/movies${p}`}>
+              Reviews
+            </Link>
           </nav>
         </Header>
+        <Suspense fallback={<div>...loading page</div>}>
+          <Outlet></Outlet>
+        </Suspense>
       </Container>
-      <Suspense fallback={<div>...loading page</div>}>
-        <Outlet></Outlet>
-      </Suspense>
     </>
   );
 };

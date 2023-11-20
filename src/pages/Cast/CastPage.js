@@ -1,12 +1,13 @@
 import { fetchApi } from 'takeApi';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { Wrapper, WrapperCard } from './CastPage.styled';
 
 export default function Casts() {
   const [actors, setActors] = useState([]);
   const { id } = useParams();
-
+  const location = useLocation();
+  console.log(location);
   useEffect(() => {
     async function getI() {
       const endPoint = `/movie/${id}/credits`;
