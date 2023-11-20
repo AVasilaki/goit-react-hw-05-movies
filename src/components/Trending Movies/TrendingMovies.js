@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchApi } from 'takeApi';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Audio } from 'react-loader-spinner';
 const StyledLink = styled(NavLink)`
   color: blue;
@@ -14,6 +14,7 @@ const StyledLink = styled(NavLink)`
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const [loader, setLoader] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     setLoader(true);
@@ -38,7 +39,11 @@ export default function Home() {
       <ul>
         {movies.map(movie => {
           return (
-            <StyledLink to={`/movies/${movie.id}`} key={movie.id}>
+            <StyledLink
+              to={`/movies/${movie.id}`}
+              key={movie.id}
+              state={{ from: location }}
+            >
               <li>{movie.name || movie.title}</li>
             </StyledLink>
           );

@@ -31,7 +31,7 @@ const MovieDetails = () => {
   }, [backLinkHref]);
 
   console.log('back', back);
-  console.log('location state', backLinkHref.search);
+  console.log('location state', location);
   console.log('type', typeof backLinkHref);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const MovieDetails = () => {
     <>
       <div>
         <Wrapper>
-          {back !== undefined && <BackLink to={back}>Back to movies</BackLink>}
+          {back !== undefined && <BackLink to={back}>Back {}</BackLink>}
           <img
             src={`https://image.tmdb.org/t/p/w300/${movieDetail.poster_path}`}
             alt=""
