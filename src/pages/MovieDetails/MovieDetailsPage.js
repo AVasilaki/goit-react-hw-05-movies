@@ -20,18 +20,26 @@ const MovieDetails = () => {
   const { id } = useParams();
   const [back, setBack] = useState();
   const location = useLocation();
+  let [pageName, setPageName] = useState('');
   // const [searchParams] = useSearchParams();
-
+  // let pageName = '';
   const backLinkHref = location.state?.from ?? `/movies`;
   // const linkTo = { pathname: '/movies', state: { query: backLinkHref.search } };
   useEffect(() => {
     if (typeof backLinkHref === 'object') {
       setBack(backLinkHref);
+      // setPageName(location.state.name);
     }
-  }, [backLinkHref]);
+    if (location.state !== null) {
+      console.log('location state', location.state.from.pathname);
+      location.state.from.pathname === '/'
+        ? setPageName('Home')
+        : setPageName('Movies');
+    }
+  }, [backLinkHref, location]);
 
   console.log('back', back);
-  console.log('location state', location);
+
   console.log('type', typeof backLinkHref);
 
   useEffect(() => {
@@ -56,7 +64,9 @@ const MovieDetails = () => {
     <>
       <div>
         <Wrapper>
-          {back !== undefined && <BackLink to={back}>Back {}</BackLink>}
+          {back !== undefined && (
+            <BackLink to={back}>Back to {pageName}</BackLink>
+          )}
           <img
             src={`https://image.tmdb.org/t/p/w300/${movieDetail.poster_path}`}
             alt=""

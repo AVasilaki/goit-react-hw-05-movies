@@ -16,7 +16,7 @@ export const MoviesList = ({ movies }) => {
         return (
           <StyledLink
             to={`/movies/${movie.id}`}
-            state={{ from: location }}
+            state={{ from: location, name: 'movies' }}
             key={movie.id}
           >
             <li>
