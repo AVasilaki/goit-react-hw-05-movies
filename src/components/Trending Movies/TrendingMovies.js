@@ -42,7 +42,7 @@ export default function Home() {
             <StyledLink
               to={`/movies/${movie.id}`}
               key={movie.id}
-              state={{ from: location, name: 'home' }}
+              state={{ from: location }}
             >
               <li>{movie.name || movie.title}</li>
             </StyledLink>
