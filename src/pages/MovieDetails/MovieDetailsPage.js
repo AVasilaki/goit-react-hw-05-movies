@@ -12,8 +12,6 @@ import {
 
 import { Wrapper } from './MovieDetailsPage.styled';
 
-// import Casts from 'pages/Cast/CastPage';
-
 const MovieDetails = () => {
   const [movieDetail, setMovieDetail] = useState({});
   const [genres, setGenres] = useState([]);
@@ -21,14 +19,11 @@ const MovieDetails = () => {
   const [back, setBack] = useState();
   const location = useLocation();
   let [pageName, setPageName] = useState('');
-  // const [searchParams] = useSearchParams();
-  // let pageName = '';
   const backLinkHref = location.state?.from ?? `/movies`;
-  // const linkTo = { pathname: '/movies', state: { query: backLinkHref.search } };
+
   useEffect(() => {
     if (typeof backLinkHref === 'object') {
       setBack(backLinkHref);
-      // setPageName(location.state.name);
     }
     if (location.state !== null) {
       console.log('location state', location.state.from.pathname);
