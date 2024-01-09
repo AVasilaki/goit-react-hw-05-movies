@@ -6,8 +6,7 @@ import { Wrapper, WrapperCard } from './CastPage.styled';
 export default function Casts() {
   const [actors, setActors] = useState([]);
   const { id } = useParams();
-  // const location = useLocation();
-  // console.log(location);
+  
   useEffect(() => {
     async function getI() {
       const endPoint = `/movie/${id}/credits`;

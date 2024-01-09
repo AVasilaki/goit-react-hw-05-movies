@@ -26,17 +26,14 @@ const MovieDetails = () => {
       setBack(backLinkHref);
     }
     if (location.state !== null) {
-      console.log('location state', location.state.from.pathname);
+      
       location.state.from.pathname === '/'
         ? setPageName('Home')
         : setPageName('Movies');
     }
   }, [backLinkHref, location]);
 
-  console.log('back', back);
-
-  console.log('type', typeof backLinkHref);
-
+    
   useEffect(() => {
     async function getI() {
       const endPoint = `/movie/${id}`;

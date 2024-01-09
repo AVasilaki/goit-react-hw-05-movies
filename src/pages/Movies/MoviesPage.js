@@ -14,8 +14,6 @@ const Movies = () => {
   const [btnLoadMore, setBtnLoadMore] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
 
-  console.log(keyWord, page, endPoint, movies);
-
   const onChange = evt => {
     evt.preventDefault();
     const form = evt.currentTarget;
@@ -25,7 +23,6 @@ const Movies = () => {
 
   const pageChange = () => {
     page = parseInt(page) + 1;
-    console.log(page, typeof page);
     setSearchParams({ query: keyWord, page: page });
   };
 
@@ -36,7 +33,7 @@ const Movies = () => {
 
         setTotalPages(resp.data.total_pages);
         setMovies(p => [...resp.data.results]);
-        console.log(resp.data);
+
         if (totalPages > 19) {
           setBtnLoadMore(true);
         }
